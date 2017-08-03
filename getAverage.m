@@ -1,12 +1,12 @@
-function imAvg = getAverage(fp)
+function imAvg = getAverage(filePath)
 %getAverage function to take the average image of a stack
 %   fp = file path for the folder that contains the image stack
 
-imDir = dir(fp);
+imDir = dir(filePath);
 
 imCounter = 1;
 for i = 1:length(imDir)
-    if(imDir(i).name(1) = 'F')
+    if(strcmp(imDir(i).name(1:6),'Frame_'))
         newIm = double(imread(imDir(i).name));
         if(imCounter == 1)
             sumIm = newIm;
